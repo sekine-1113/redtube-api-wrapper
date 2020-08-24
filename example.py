@@ -1,12 +1,11 @@
 import redtube
 
 
-client = redtube.RedTube()
-
+client = redtube.RedTube()  # default json
+#        redtube.RedTube("xml")
 
 # -- start video methods --
 print(client.search_videos(search="japanese")["videos"][0], end="\n\n")  # first data
-# available: res = client.search_videos(output="xml")
 
 video_id = 35215931  # sample
 if client.is_video_active(video_id)["active"]["is_active"]:

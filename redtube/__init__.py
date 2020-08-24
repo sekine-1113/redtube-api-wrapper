@@ -9,6 +9,12 @@ from .additionals import Additionals
 
 
 class RedTube(Videos, Additionals):
-    pass
+    """
+    :param output_type (optional): json, xml / default json
+    """
+
+    def __init__(self, output_type="json"):
+        Videos.__init__(self, output_type)
+        Additionals.__init__(self, output_type)
 
 __all__ = ["RedTube",]
