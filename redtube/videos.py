@@ -21,6 +21,13 @@ class Videos:
         :param period (optional): weekly, monthly, alltime
         """
         url = f"{BASE_URL}data=redtube.Videos.searchVideos&output={self._output_type}"
+        """
+        TODO URLに埋め込むかparams指定にするか
+        params = {
+            "data" : "redtube.Videos.searchVideos",
+            "output" : self._output_type,
+        }
+        """
         for k, v in kwargs.items():
             if k == "search":
                 if type(v) in (list, set, tuple):
