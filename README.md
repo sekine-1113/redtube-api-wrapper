@@ -36,5 +36,5 @@ redtube-api
 
 # License
 
-
+MIT
 
