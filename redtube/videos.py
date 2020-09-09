@@ -7,50 +7,52 @@ class Videos:
         self._output_type = output_type
 
 
-    def search_videos(self, **kwargs):
+    def search_videos(
+            self, search="", category="", page=1,
+            tags=None, stars=None, thumbsize=None,
+            ordering=None, period=None):
         """
         Search videos.
 
         :param search (optional): string, array
         :param category (optional): string
         :param page (optional): integer / default 1
-        :param tags (optional): array
-        :param stars (optional): array
+        :param tags[] (optional): array
+        :param stars[] (optional): array
         :param thumbsize (optional): medium, small, big, all, medium1, medium2
         :param ordering (optional): newest, mostviewed, rating
         :param period (optional): weekly, monthly, alltime
         """
-        url = f"{BASE_URL}data=redtube.Videos.searchVideos&output={self._output_type}"
-        """
-        TODO URLに埋め込むかparams指定にするか
         params = {
             "data" : "redtube.Videos.searchVideos",
             "output" : self._output_type,
+            "search" : search if type(search) is str else ",".join(search),
+            "category" : category,
+            "page" : page,
+            "tags[]" : tags,
+            "stars[]" : stars,
+            "thumbsize" : thumbsize,
+            "ordering" : ordering,
+            "period" : period,
         }
-        """
-        for k, v in kwargs.items():
-            if k == "search":
-                if type(v) in (list, set, tuple):
-                    v = ','.join(v)
-            elif k in ("tags", "stars"):
-                k = f"{k}[]"
-                v = urllib.parse.quote(",".join(v))
-            url += f"&{GENERATE_URL.format(k, v)}"
-        req = requests.get(url)
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
 
 
-    def get_video_by_id(self, video_id, thumbsize=""):
+    def get_video_by_id(self, video_id, thumbsize=None):
         """
         get video by video_id.
 
         :param video_id (required): integer
         :param thumbsize (optional): medium, small, big, all, medium1, medium2
         """
-        url = f"{BASE_URL}data=redtube.Videos.getVideoById&video_id={video_id}&output={self._output_type}"
-        if thumbsize in ("medium", "small", "big", "all", "medium1", "medium2"):
-            url += f"&thumbsize={thumbsize}"
-        req = requests.get(url)
+        params = {
+            "data" : "redtube.Videos.getVideoById",
+            "output" : self._output_type,
+            "video_id" : video_id,
+            "thumbsize" : thumbsize,
+        }
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
 
 
@@ -60,8 +62,12 @@ class Videos:
 
         :param video_id (required): integer
         """
-        url = f"{BASE_URL}data=redtube.Videos.isVideoActive&video_id={video_id}&output={self._output_type}"
-        req = requests.get(url)
+        params = {
+            "data" : "redtube.Videos.isVideoActive",
+            "output" : self._output_type,
+            "video_id" : video_id
+        }
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
 
 
@@ -71,8 +77,12 @@ class Videos:
 
         :param video_id (required): integer
         """
-        url = f"{BASE_URL}data=redtube.Videos.getVideoEmbedCode&video_id={video_id}&output={self._output_type}"
-        req = requests.get(url)
+        params = {
+            "data" : "redtube.Videos.getVideoEmbedCode",
+            "output" : self._output_type,
+            "video_id" : video_id
+        }
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
 
 

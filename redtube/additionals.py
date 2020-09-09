@@ -11,8 +11,11 @@ class Additionals:
         """
         get categories list.
         """
-        url = f"{BASE_URL}data=redtube.Categories.getCategoriesList&output={self._output_type}"
-        req = requests.get(url)
+        params = {
+            "data" : "redtube.Categories.getCategoriesList",
+            "output" : self._output_type,
+        }
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
 
 
@@ -20,8 +23,11 @@ class Additionals:
         """
         get tags list.
         """
-        url = f"{BASE_URL}data=redtube.Tags.getTagList&output={self._output_type}"
-        req = requests.get(url)
+        params = {
+            "data" : "redtube.Tags.getTagList",
+            "output" : self._output_type,
+        }
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
 
 
@@ -29,8 +35,11 @@ class Additionals:
         """
         get stars list.
         """
-        url = f"{BASE_URL}data=redtube.Stars.getStarList&output={self._output_type}"
-        req = requests.get(url)
+        params = {
+            "data" : "redtube.Stars.getStarList",
+            "output" : self._output_type,
+        }
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
 
 
@@ -38,6 +47,9 @@ class Additionals:
         """
         get categories list.
         """
-        url = f"{BASE_URL}data=redtube.Stars.getStarDetailedList&output={self._output_type}"
-        req = requests.get(url)
+        params = {
+            "data" : "redtube.Stars.getStarDetailedList",
+            "output" : self._output_type,
+        }
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
