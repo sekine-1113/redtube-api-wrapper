@@ -92,6 +92,10 @@ class Videos:
 
         :param page (required): integer / default 1
         """
-        url = f"{BASE_URL}data=redtube.Videos.getDeletedVideos&page={page}&output={self._output_type}"
-        req = requests.get(url)
+        params = {
+            "data" : "redtube.Videos.getDeletedVideos",
+            "output" : self._output_type,
+            "page" : page,
+        }
+        req = requests.get(URL, params=params)
         return output(self._output_type, req.text)
