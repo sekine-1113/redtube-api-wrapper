@@ -17,8 +17,8 @@ class Videos:
         :param search (optional): string, array
         :param category (optional): string
         :param page (optional): integer / default 1
-        :param tags[] (optional): array
-        :param stars[] (optional): array
+        :param tags (optional): array
+        :param stars (optional): array
         :param thumbsize (optional): medium, small, big, all, medium1, medium2
         :param ordering (optional): newest, mostviewed, rating
         :param period (optional): weekly, monthly, alltime
