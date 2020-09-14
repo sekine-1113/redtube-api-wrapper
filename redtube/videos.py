@@ -10,7 +10,7 @@ class Videos:
     def search_videos(
             self, search="", category="", page=1,
             tags=None, stars=None, thumbsize=None,
-            ordering=None, period=None):
+            ordering="mostviewed", period="monthly"):
         """
         Search videos.
 
