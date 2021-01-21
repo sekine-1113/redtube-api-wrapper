@@ -3,10 +3,6 @@ from .core import *
 
 class Videos:
 
-    def __init__(self, output_type):
-        self._output_type = output_type
-
-
     def search_videos(
             self, search="", category="", page=1,
             tags=None, stars=None, thumbsize=None,
@@ -25,7 +21,6 @@ class Videos:
         """
         params = {
             "data" : "redtube.Videos.searchVideos",
-            "output" : self._output_type,
             "search" : search if type(search) is str else ",".join(search),
             "category" : category,
             "page" : page,
@@ -35,8 +30,7 @@ class Videos:
             "ordering" : ordering,
             "period" : period,
         }
-        req = requests.get(URL, params=params)
-        return output(self._output_type, req.text)
+        return output(URL, params)
 
 
     def get_video_by_id(self, video_id, thumbsize=None):
@@ -48,12 +42,10 @@ class Videos:
         """
         params = {
             "data" : "redtube.Videos.getVideoById",
-            "output" : self._output_type,
             "video_id" : video_id,
             "thumbsize" : thumbsize,
         }
-        req = requests.get(URL, params=params)
-        return output(self._output_type, req.text)
+        return output(URL, params)
 
 
     def is_video_active(self, video_id):
@@ -64,11 +56,9 @@ class Videos:
         """
         params = {
             "data" : "redtube.Videos.isVideoActive",
-            "output" : self._output_type,
             "video_id" : video_id
         }
-        req = requests.get(URL, params=params)
-        return output(self._output_type, req.text)
+        return output(URL, params)
 
 
     def get_video_embed_code(self, video_id):
@@ -79,11 +69,9 @@ class Videos:
         """
         params = {
             "data" : "redtube.Videos.getVideoEmbedCode",
-            "output" : self._output_type,
             "video_id" : video_id
         }
-        req = requests.get(URL, params=params)
-        return output(self._output_type, req.text)
+        return output(URL, params)
 
 
     def get_deleted_videos(self, page=1):
@@ -94,8 +82,6 @@ class Videos:
         """
         params = {
             "data" : "redtube.Videos.getDeletedVideos",
-            "output" : self._output_type,
             "page" : page,
         }
-        req = requests.get(URL, params=params)
-        return output(self._output_type, req.text)
+        return output(URL, params)

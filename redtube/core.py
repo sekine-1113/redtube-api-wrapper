@@ -4,7 +4,6 @@ import urllib.parse
 
 URL = r"https://api.redtube.com/"
 
-def output(output_type, data):
-    if output_type.lower() == "json":
-        return json.loads(data)
-    return data
+def output(url, params=None):
+    req = requests.get(url, params=params)
+    return json.loads(req.text)

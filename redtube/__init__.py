@@ -1,15 +1,11 @@
 from .core import *
 from .videos import Videos
-from .additionals import Additionals
+from .informations import Informations
 
 
-class RedTube(Videos, Additionals):
-    """
-    :param output_type (optional): json, xml / default json
-    """
+class RedTube(Videos, Informations):
 
-    def __init__(self, output_type="json"):
-        Videos.__init__(self, output_type)
-        Additionals.__init__(self, output_type)
+    def __init__(self):
+        pass
 
 __all__ = ["RedTube",]
