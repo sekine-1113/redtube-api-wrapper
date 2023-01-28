@@ -1,4 +1,4 @@
-import redtube
+from redtubeAPI import redtube
 
 client = redtube.RedTube()
 
