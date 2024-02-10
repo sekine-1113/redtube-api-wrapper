@@ -1,6 +1,6 @@
-from redtubeAPI import redtube
+from redtube import RedTube
 
-client = redtube.RedTube()
+client = RedTube()
 
 """https://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=hard&tags[]=Teen&thumbsize=medium"""
 print(client.search_videos(
