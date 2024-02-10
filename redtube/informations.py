@@ -15,7 +15,7 @@ class Informations:
         """
         get tags list.
         """
-        params = {"data":"redtube.Tags.getTagList",}
+        params = {"data":"redtube.Tags.getTagList"}
         return output(URL, params)
 
 

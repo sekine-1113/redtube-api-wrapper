@@ -2,4 +2,9 @@ from redtubeAPI import redtube
 
 client = redtube.RedTube()
 
-print(client.get_tag_list())
+"""https://api.redtube.com/?data=redtube.Videos.searchVideos&output=json&search=hard&tags[]=Teen&thumbsize=medium"""
+print(client.search_videos(
+    search = "hard",
+    tags = "Teen",
+    thumbsize = "medium"
+))  # -> {"videos": [...]}
